@@ -1,0 +1,47 @@
+@model RepositorioDTO_EF.DTO.ProductoDTO
+
+<h1>Eliminar Producto</h1>
+
+<h3>Esta seguro que desea eliminar este producto?</h3>
+<div>
+    <h4>Producto</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model=>model.Nombre)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model=>model.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model=>model.Precio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model=>model.Precio)
+        </dd>
+    </dl>
+    <form asp-action="Delete" id="deleteForm" asp-route-id="@Model.Id">
+        <input type="submit" value="Delete" class="btn btn-danger">
+        <a asp-action="Index">Regresar al Index</a>
+    </form>
+</div>
+@section scripts
+{
+<script>
+    document.getElementById('deleteForm').addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        swal({
+            title: 'Esta seguro?',
+            text: 'Esta seguro que desea eliminar este producto?',
+            icon: 'warning',
+            buttons: true,
+            dangerMode: true,
+        }).then((confirmed) => {
+            if (confirmed) {
+                this.submit();
+            }
+        })
+    });
+</script>
+}

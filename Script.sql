@@ -1,0 +1,10 @@
+
+CREATE DATABASE EjemploDB
+USE EjemploDB
+
+CREATE TABLE Productos(
+    Id INT IDENTITY(1,1) PRIMARY KEY,
+    Nombre VARCHAR(50) NOT NULL,
+    Precio DECIMAL(18,2) NOT NULL
+)
+
